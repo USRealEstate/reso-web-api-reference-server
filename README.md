@@ -21,6 +21,8 @@ Run the `run.sh`
 Assuming you're running the server locally, go to [http://localhost:8080/core/2.0.0/$metadata](http://localhost:8080/core/2.0.0/$metadata)\
 Otherwise, you will have to replace `localhost` with the IP of your Docker machine.
 
+![](https://cdn.ossez.com/discourse-uploads/optimized/2X/8/881469dc9b204975de209b56f0d897ba8b782347_2_690x439.png)
+
 ## Running with a different database
 
 If you set the `SQL_HOST` Environment Variable, then the build script will not build the test database.
