@@ -63,11 +63,11 @@ public class RESOservlet extends HttpServlet
 //      this.validator.addProvider(new BasicAuthProvider());  // We're using this for the token auth.  Only use here for easy browser testing.
       this.validator.addProvider(new BearerAuthProvider());
 
-      String dbHost = env.get("SQL_HOST");
-      String dbUser = env.get("SQL_USER");
-      String dbPwd = env.get("SQL_PASSWORD");
-      String dbConnString = env.get("SQL_CONNECTION_STR");
-      String dbDriverStr = env.get("SQL_DB_DRIVER");
+      String dbHost = "localhost";
+      String dbUser ="root";
+      String dbPwd = "root";
+      String dbConnString = "jdbc:mysql://localhost:6033/reso_data_dictionary_1_7?autoReconnect=true&maxReconnects=4";
+      String dbDriverStr = "com.mysql.cj.jdbc.Driver";
 
 
       String definitionFile = env.get("CERT_REPORT_FILENAME");
@@ -220,16 +220,16 @@ public class RESOservlet extends HttpServlet
    protected void service(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
 
       // Due to order of operations, the unauthorized response won't be called unless the verification fails.
-      if (!this.validator.verify(req) && this.validator.unauthorizedResponse(resp))
-      {
-         SimpleError error = new SimpleError(SimpleError.AUTH_REQUIRED);
-         ObjectMapper objectMapper = new ObjectMapper();
-
-         PrintWriter out = resp.getWriter();
-         out.println(objectMapper.writeValueAsString(error));
-         out.flush();
-         return;
-      }
+//      if (!this.validator.verify(req) && this.validator.unauthorizedResponse(resp))
+//      {
+//         SimpleError error = new SimpleError(SimpleError.AUTH_REQUIRED);
+//         ObjectMapper objectMapper = new ObjectMapper();
+//
+//         PrintWriter out = resp.getWriter();
+//         out.println(objectMapper.writeValueAsString(error));
+//         out.flush();
+//         return;
+//      }
 
       try {
          this.handler.process(req, resp);
